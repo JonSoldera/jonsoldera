@@ -77,4 +77,303 @@
             <div class="form-group" style="flex: 1;padding:30px;">
                 <label for="size">Size (px)</label>
                 <p>Gera imagens com a resolução desejada em pixels. Digite a resolução desejada no formato
-                    "W
+                    "W:H",
+                    por
+                    exemplo "16:9" para 16:9 aspect ratio (~448x256).</p>
+                <input type="text" class="form-control" id="ar" name="ar" placeholder="W:H">
+            </div>
+
+            <div class="form-group" style="flex: 1;padding:30px;">
+                <label for="w">Width (W)</label>
+                <p>Define a largura da imagem. O valor deve estar entre 256 e 2034, tendo em mente que o
+                    resolução upscale máxima é de cerca de 3 Megapixels. Esses valores funcionam melhor como múltiplos de 64 (ou
+                    128
+                    for "--hd").</p>
+                <input type="number" class="form-control" id="w" name="w" min="256" max="2034">
+            </div>
+
+            <div class="form-group" style="flex: 1;padding:30px">
+                <label for="h">Height (H)</label>
+                <p>Define a altura da imagem. O valor deve estar entre 256 e 2034, tendo em mente que o
+                    resolução upscale máxima é de cerca de 3 Megapixels. Esses valores funcionam melhor como múltiplos (ou
+                    128
+                    para "--hd").</p>
+                <input type="number" class="form-control" id="h" name="h" min="256" max="2034">
+            </div>
+        </div>
+
+        <div style="display: flex;align-items: flex-end;">
+            <div class="form-group" style="flex: 1;padding:30px;">
+                <label for="seed">Seed</label>
+                <p>Define a semente, que às vezes pode ajudar a manter as coisas mais estáveis ​​e reprodutíveis ao tentar
+                    gerar
+                    um prompt semelhante novamente. Deve ser um número inteiro positivo (qualquer número inteiro entre 0 a 4294967295).
+                    Se
+                    não usado, uma semente aleatória será escolhida em seu lugar, nos bastidores.</p>
+                <input type="number" class="form-control" id="seed" name="seed" min="0" max="4294967295">
+            </div>
+
+
+            <div class="form-group" style="flex: 1;padding:30px;">
+                <label for="no">Negative Prompting (No)</label>
+                <p>Negative prompting (`--no plant tentaria remover plantas). Equivale a usar um texto avançado
+                    peso de `::-0.5`.</p>
+                <input type="text" class="form-control" id="no" name="no" placeholder="thing to remove">
+            </div>
+
+            <div class="form-group" style="flex: 1;padding:30px;">
+                <label for="iw">Image Weight (IW)</label>
+                <p>Sets image prompt weight relative to text weight. The default value is 0.25.</p>
+                <input type="number" class="form-control" id="iw" name="iw" min="-1" max="1" step="0.1">
+            </div>
+        </div>
+
+        <div style="display: flex;align-items: flex-end;">
+            <div class="form-group" style="flex: 1;padding:30px;">
+                <label for="stylize">Stylize</label>
+                <p>O argumento estilizar define o quão forte é a 'estilização' de suas imagens, quanto mais alto você definir, mais
+                    mais
+                    opinativo será. O valor padrão é 2500. Veja abaixo mais informações.</p>
+                <input type="number" class="form-control" id="stylize" name="stylize" min="625" max="60000">
+            </div>
+
+            <div class="form-group" style="flex: 1;padding:30px;">
+                <label for="quality">Quality</label>
+                <p>Quanto tempo de qualidade de renderização você deseja gastar. O valor padrão é 1. Valores mais altos custam mais
+                    e
+                    valores mais baixos custam menos.</p>
+                <input type="number" class="form-control" id="quality" name="quality" min="0" max="5" step="0.5">
+            </div>
+
+            <div class="form-group" style="flex: 1;padding:30px;">
+                <label for="chaos">Chaos</label>
+                <p>Quão mais variados, aleatórios e diferentes serão os resultados. Deve estar entre 0-100. valores mais altos
+                    favorecerá gerações mais interessantes e incomuns em troca de composições menos confiáveis.</p>
+                <input type="number" class="form-control" id="chaos" name="chaos" min="0" max="100">
+            </div>
+        </div>
+
+        <div style="display: flex;align-items: flex-end;">
+            <div class="form-group" style="flex: 1;padding:30px;">
+                <label for="stop">Stop</label>
+                <p>Para a geração em uma porcentagem anterior. Deve estar entre 10-100. Isso atualmente não funciona
+                    com
+                    upscales.</p>
+                <input type="number" class="form-control" id="stop" name="stop" min="10" max="100">
+            </div>
+
+
+            <div class="form-group" style="flex: 1;padding:30px;">
+                <label for="version">Version</label>
+                <p>Usa algoritmos antigos 1 (que anteriormente era a opção "vibe", às vezes melhor para macro ou texturas)
+                    ou
+                    2, a última melhoria. Estamos na versão 4 agora, que você não precisa especificar. Então especifique
+                    `--version 2` para usar o modelo anterior mais antigo, ou `--version 1` para o anterior.</p>
+                <select class="form-control" id="version" name="version">
+                    <option value=""></option>
+                    <option value="1">1 (oldest)</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+            <div class="form-group" style="flex: 1;padding:30px;">
+                <label for="version"> Meio Artístico </label>
+                <p>Meio Artístico. Escolha uma opção ou deixe em branco.</p>
+                <select id="art-medium" class="full-text-option">
+                    <option value=""></option>
+                    <option value="acrylic">Acrylic</option>
+                    <option value="watercolor">Watercolor</option>
+                    <option value="oil">Oil</option>
+                    <option value="pastel">Pastel</option>
+                    <option value="pen-ink">Pen and ink</option>
+                    <option value="graphite">Graphite</option>
+                    <option value="charcoal">Charcoal</option>
+                    <option value="colored-pencil">Colored pencil</option>
+                    <option value="marker">Marker</option>
+                    <option value="pencil-crayon">Pencil crayon</option>
+                    <option value="clay">Clay</option>
+                    <option value="sculpture">Sculpture</option>
+                    <option value="photography">Photography</option>
+                    <option value="printmaking">Printmaking</option>
+                    <option value="collage">Collage</option>
+                    <option value="assemblage">Assemblage</option>
+                    <option value="textile-art">Textile art</option>
+                    <option value="digital-art">Digital art</option>
+                </select>
+            </div>
+        </div>
+	    </select>
+            </div>
+            <div class="form-group" style="flex: 1;padding:30px;">
+                <label for="version"> Estilização </label>
+                <p>Meio Artístico. Escolha uma opção ou deixe em branco.</p>
+                <select id="art-medium" class="full-text-option">
+                    <option value=""></option>
+                    <option value="Atompunk">Atompunk</option>
+                    <option value="Steampunk">Steampunk</option>
+                    <option value="gogogaga">gogogaga</option>
+                    <option value="Skullpunk">Skullpunk</option>
+                    <option value="Wolfpunk">Wolfpunk</option>
+                    <option value="Synthpunk">Synthpunk</option>
+                    <option value="Robopunk">Robopunk</option>
+                    <option value="Retropunk">Retropunk</option>
+                    <option value="Ravepunk">Ravepunk</option>
+                    <option value="Ghostpunk">Ghostpunk</option>
+                    <option value="Flowerpunk">Flowerpunk</option>
+                    <option value="Electropunk">Electropunk</option>
+                    <option value="Cyberpunk">Cyberpunk</option>
+                    <option value="Crystalpunk">Crystalpunk</option>
+                    <option value="Cryopunke">Cryopunk</option>
+                    <option value="Arcanepunk">Arcanepunk</option>
+                    <option value="Aquapunk">Aquapunk</option>
+                    <option value="Biopunk">Biopunk</option>
+                </select>
+            </div>
+        </div>
+</select>
+            </div>
+            <div class="form-group" style="flex: 1;padding:30px;">
+                <label for="version"> Estilização </label>
+                <p>Camera. Escolha uma opção ou deixe em branco.</p>
+                <select id="art-medium" class="full-text-option">
+                    <option value=""></option>
+                    <option value="Atompunk">Atompunk</option>
+                    <option value="Steampunk">Steampunk</option>
+                    <option value="gogogaga">gogogaga</option>
+                    <option value="Skullpunk">Skullpunk</option>
+                    <option value="Wolfpunk">Wolfpunk</option>
+                    <option value="Synthpunk">Synthpunk</option>
+                    <option value="Robopunk">Robopunk</option>
+                    <option value="Retropunk">Retropunk</option>
+                    <option value="Ravepunk">Ravepunk</option>
+                    <option value="Ghostpunk">Ghostpunk</option>
+                    <option value="Flowerpunk">Flowerpunk</option>
+                    <option value="Electropunk">Electropunk</option>
+                    <option value="Cyberpunk">Cyberpunk</option>
+                    <option value="Crystalpunk">Crystalpunk</option>
+                    <option value="Cryopunke">Cryopunk</option>
+                    <option value="Arcanepunk">Arcanepunk</option>
+                    <option value="Aquapunk">Aquapunk</option>
+                    <option value="Biopunk">Biopunk</option>
+                </select>
+            </div>
+        </div>
+        <div style="display: flex;align-items: flex-start;">
+            <div class="form-check" style="flex: 1;padding:30px;">
+                <input class="form-check-input" type="checkbox" value="" id="beta">
+                <label class="form-check-label label-checkbox" for="beta">
+                    Beta
+                </label>
+                <p>Usa um novo algoritmo experimental. Este modelo leva muito mais tempo para rodar e só produz 2
+                    saídas (1 para resoluções não quadradas). Também não funciona com `--hd`, `--stylize`, and `--q 5`.
+                </p>
+            </div>
+
+            <div class="form-check" style="flex: 1;padding:30px;">
+                <input class="form-check-input" type="checkbox" value="" id="hd">
+                <label class="form-check-label label-checkbox" for="hd">
+                    HD
+                </label>
+                <p>Usa um algoritmo diferente e mais antigo que é potencialmente melhor para imagens maiores, mas com menos
+                    consistente
+                    composição. Melhor para prompts abstratos e de paisagem. Isso também gera imagens em maior
+                    resolução
+                    sem a necessidade de upscale.</p>
+            </div>
+
+            <div class="form-check" style="flex: 1;padding:30px;">
+                <input class="form-check-input" type="checkbox" value="" id="sameseed">
+                <label class="form-check-label label-checkbox" for="sameseed">
+                    Same Seed
+                </label>
+                <p>Faz com que a semente afete todas as imagens da grade resultante da mesma maneira. Se não for usado, cada
+                    imagem na
+                    a grade usará uma "fatia" diferente da semente, proporcionando maior variedade.</p>
+            </div>
+        </div>
+
+        <div style="display: flex;align-items: flex-start;">
+
+            <div class="form-check" style="flex: 1;padding:30px;">
+                <input class="form-check-input" type="checkbox" value="" id="video">
+                <label class="form-check-label label-checkbox" for="video">
+                    Video
+                </label>
+                <p>Salva um vídeo de progresso, que é enviado para você no ✉️-triggered DM (DM desencadeado (você deve reagir com o envelope
+                    para
+                    peguar o link do vídeo). Isso atualmente não funciona com upscales.</p>
+            </div>
+
+            <div class="form-check" style="flex: 1;padding:30px;">
+                <input class="form-check-input" type="checkbox" value="" id="uplight">
+                <label class="form-check-label label-checkbox" for="uplight">
+                    Uplight
+                </label>
+                <p>Usa o upscaler "leve" ao selecionar os botões U. Os resultados ficam mais próximos da imagem
+                    original,
+                    com menos detalhes adicionados durante o upscale. Ideal para rostos e superfícies lisas.</p>
+            </div>
+            <div style="flex: 1;padding:30px;">
+
+            </div>
+
+        </div>
+    </form>
+
+
+    <div id="computed-prompt-div">
+        <!-- Textarea to display the prompt string -->
+        <textarea id="computed-prompt" readonly="true" class="form-control" rows="3"></textarea>
+
+        <!-- "Copy to clipboard" button -->
+        <button id="copy-button" class="btn btn-primary">Copy to clipboard</button>
+    </div>
+    <!-- JavaScript code to handle the input fields and update the prompt string -->
+    <script>
+        function generatePrompt() {
+            // get all form elements
+            const formElements = document.querySelectorAll('input, select, textarea');
+
+            // start building the command
+            let command = '';
+
+            // add the prompt
+            command += ` ${document.getElementById('prompt').value}`;
+
+            // add the other form elements
+            formElements.forEach(element => {
+                if (element.type === 'checkbox') {
+                    if (element.checked) {
+                        command += ` --${element.id}`;
+                    }
+                } else if (element.id !== 'computed-prompt' && element.id !== 'prompt' && element.value) {
+                    if (element.classList.contains('full-text-option')){
+                        command += ` ${element.value}`;
+                    } else {
+                        command += ` --${element.name} ${element.value}`;
+                    }
+
+
+                }
+            });
+
+            // update the prompt textarea
+            document.getElementById('computed-prompt').value = command;
+        }
+
+        // update the prompt when any form element is changed
+        document.querySelectorAll('input, select, textarea').forEach(element => {
+            element.addEventListener('input', generatePrompt);
+        });
+
+        // Copy the prompt string to the clipboard when the "Copy to clipboard" button is clicked
+        document.getElementById('copy-button').addEventListener('click', () => {
+            document.getElementById('computed-prompt').select();
+            document.execCommand('copy');
+        });
+    </script>
+</body>
+
+</html>
+
