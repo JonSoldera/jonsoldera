@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Midjourney Text-to-Image</title>
+    <title>Midjourney Canal PorQ-On Texto-da-Imagem-@Midartai</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -51,8 +51,8 @@
 <body style="background-color: #f5f5f5;font-family: 'Roboto', sans-serif;padding-bottom:150px">
     <h1 style="text-align: center; margin-bottom: 20px;">Midjourney Prompt Generator</h1>
     <div id="description" style="text-align: center; margin-bottom: 20px;">
-        <p>This webapp generates a Midjourney prompt from a text input and various options. Simply enter the prompt and
-            the desired options below and the app will generate the prompt for you.</p>
+        <p>Este aplicativo da web gera um prompt Midjourney a partir de uma entrada de texto contendo várias opções. Basta inserir o 
+prompt e as opções desejadas abaixo e o aplicativo gerará o prompt para você - by Por-On.</p>
     </div>
 
     <!-- HTML form with input fields for the parameters -->
@@ -60,23 +60,23 @@
     <form id="form" class="form" style="margin: 20px;">
         <div class="form-group-prompt">
             <label for="prompt">Prompt</label>
-            <p>Enter the text for the prompt here.</p>
+            <p>Digite o texto para o prompt aqui.</p>
             <textarea class="form-control" id="prompt" name="prompt" rows="3"></textarea>
         </div>
 
         <div style="display: flex;align-items: flex-end;">
             <div class="form-group" style="flex: 1;padding:30px;">
                 <label for="ar">Aspect Ratio (AR)</label>
-                <p>Generates images with the desired aspect ratio. Enter the desired aspect ratio in the format "W:H",
-                    for
-                    example "16:9" for a 16:9 aspect ratio (~448x256).</p>
+                <p>Gera imagens com a proporção desejada. Digite a proporção desejada no formato "W:H",
+                    por
+                    exemplo "16:9" para 16:9 aspect ratio (~448x256).</p>
                 <input type="text" class="form-control" id="ar" name="ar" placeholder="W:H">
             </div>
 
             <div class="form-group" style="flex: 1;padding:30px;">
                 <label for="w">Width (W)</label>
-                <p>Sets the width of the image. The value must be between 256 and 2034, while keeping in mind that the
-                    maximum upscale resolution is around 3 Megapixels. These values work better as multiples of 64 (or
+                <p>Define a largura da imagem. O valor deve estar entre 256 e 2034, tendo em mente que o
+                    resolução upscale máxima é de cerca de 3 Megapixels. Esses valores funcionam melhor como múltiplos de 64 (ou
                     128
                     for "--hd").</p>
                 <input type="number" class="form-control" id="w" name="w" min="256" max="2034">
@@ -84,10 +84,10 @@
 
             <div class="form-group" style="flex: 1;padding:30px">
                 <label for="h">Height (H)</label>
-                <p>Sets the height of the image. The value must be between 256 and 2034, while keeping in mind that the
-                    maximum upscale resolution is around 3 Megapixels. These values work better as multiples of 64 (or
+                <p>Define a altura da imagem. O valor deve estar entre 256 e 2034, tendo em mente que o
+                    resolução upscale máxima é de cerca de 3 Megapixels. Esses valores funcionam melhor como múltiplos (ou
                     128
-                    for "--hd").</p>
+                    para "--hd").</p>
                 <input type="number" class="form-control" id="h" name="h" min="256" max="2034">
             </div>
         </div>
@@ -95,19 +95,19 @@
         <div style="display: flex;align-items: flex-end;">
             <div class="form-group" style="flex: 1;padding:30px;">
                 <label for="seed">Seed</label>
-                <p>Sets the seed, which can sometimes help keep things more steady and reproducible when trying to
-                    generate
-                    a similar prompt again. It must be a positive integer (any whole number between 0 and 4294967295).
-                    If
-                    not used, a random seed will be chosen instead, behind the scenes.</p>
+                <p>Define a semente, que às vezes pode ajudar a manter as coisas mais estáveis ​​e reprodutíveis ao tentar
+                    gerar
+                    um prompt semelhante novamente. Deve ser um número inteiro positivo (qualquer número inteiro entre 0 a 4294967295).
+                    Se
+                    não usado, uma semente aleatória será escolhida em seu lugar, nos bastidores.</p>
                 <input type="number" class="form-control" id="seed" name="seed" min="0" max="4294967295">
             </div>
 
 
             <div class="form-group" style="flex: 1;padding:30px;">
                 <label for="no">Negative Prompting (No)</label>
-                <p>Negative prompting (`--no plants` would try to remove plants). Equivalent to using an advanced text
-                    weight of `::-0.5`.</p>
+                <p>Negative prompting (`--no plant tentaria remover plantas). Equivale a usar um texto avançado
+                    peso de `::-0.5`.</p>
                 <input type="text" class="form-control" id="no" name="no" placeholder="thing to remove">
             </div>
 
@@ -121,24 +121,24 @@
         <div style="display: flex;align-items: flex-end;">
             <div class="form-group" style="flex: 1;padding:30px;">
                 <label for="stylize">Stylize</label>
-                <p>The stylize argument sets how strong of a 'stylization' your images have, the higher you set it, the
-                    more
-                    opinionated it will be. The default value is 2500. See below for more info.</p>
+                <p>O argumento estilizar define o quão forte é a 'estilização' de suas imagens, quanto mais alto você definir, mais
+                    mais
+                    opinativo será. O valor padrão é 2500. Veja abaixo mais informações.</p>
                 <input type="number" class="form-control" id="stylize" name="stylize" min="625" max="60000">
             </div>
 
             <div class="form-group" style="flex: 1;padding:30px;">
                 <label for="quality">Quality</label>
-                <p>How much rendering quality time you want to spend. The default value is 1. Higher values cost more
-                    and
-                    lower values cost less.</p>
+                <p>Quanto tempo de qualidade de renderização você deseja gastar. O valor padrão é 1. Valores mais altos custam mais
+                    e
+                    valores mais baixos custam menos.</p>
                 <input type="number" class="form-control" id="quality" name="quality" min="0" max="5" step="0.5">
             </div>
 
             <div class="form-group" style="flex: 1;padding:30px;">
                 <label for="chaos">Chaos</label>
-                <p>How much more varied, random, and different the results will be. Must be between 0-100. Higher values
-                    will favor more interesting and unusual generations in exchange for less reliable compositions.</p>
+                <p>Quão mais variados, aleatórios e diferentes serão os resultados. Deve estar entre 0-100. valores mais altos
+                    favorecerá gerações mais interessantes e incomuns em troca de composições menos confiáveis.</p>
                 <input type="number" class="form-control" id="chaos" name="chaos" min="0" max="100">
             </div>
         </div>
@@ -146,8 +146,8 @@
         <div style="display: flex;align-items: flex-end;">
             <div class="form-group" style="flex: 1;padding:30px;">
                 <label for="stop">Stop</label>
-                <p>Stop the generation at an earlier percentage. Must be between 10-100. This currently does not work
-                    with
+                <p>Para a geração em uma porcentagem anterior. Deve estar entre 10-100. Isso atualmente não funciona
+                    com
                     upscales.</p>
                 <input type="number" class="form-control" id="stop" name="stop" min="10" max="100">
             </div>
@@ -155,10 +155,10 @@
 
             <div class="form-group" style="flex: 1;padding:30px;">
                 <label for="version">Version</label>
-                <p>Uses old algorithms 1 (which was formerly the "vibe" option, sometimes better for macro or textures)
-                    or
-                    2, the last improvement. We are at version 3 now, which you do not need to specify. So specify
-                    `--version 2` to use the previous older model, or `--version 1` for the one before.</p>
+                <p>Usa algoritmos antigos 1 (que anteriormente era a opção "vibe", às vezes melhor para macro ou texturas)
+                    ou
+                    2, a última melhoria. Estamos na versão 4 agora, que você não precisa especificar. Então especifique
+                    `--version 2` para usar o modelo anterior mais antigo, ou `--version 1` para o anterior.</p>
                 <select class="form-control" id="version" name="version">
                     <option value=""></option>
                     <option value="1">1 (oldest)</option>
@@ -169,7 +169,7 @@
             </div>
             <div class="form-group" style="flex: 1;padding:30px;">
                 <label for="version">Art Medium</label>
-                <p>Art Medium. Choose an option or leave it blank.</p>
+                <p>Meio Artístico. Escolha uma opção ou deixe em branco.</p>
                 <select id="art-medium" class="full-text-option">
                     <option value=""></option>
                     <option value="acrylic">Acrylic</option>
@@ -200,8 +200,8 @@
                 <label class="form-check-label label-checkbox" for="beta">
                     Beta
                 </label>
-                <p>Uses a new experimental algorithm. This model takes significantly longer to run and only produces 2
-                    outputs (1 for non square resolutions). It also does not work with `--hd`, `--stylize`, and `--q 5`.
+                <p>Usa um novo algoritmo experimental. Este modelo leva muito mais tempo para rodar e só produz 2
+                    saídas (1 para resoluções não quadradas). Também não funciona com `--hd`, `--stylize`, and `--q 5`.
                 </p>
             </div>
 
@@ -210,11 +210,11 @@
                 <label class="form-check-label label-checkbox" for="hd">
                     HD
                 </label>
-                <p>Uses a different, older algorithm that’s potentially better for larger images, but with less
-                    consistent
-                    composition. Best for abstract and landscape prompts. This also generates images at higher
-                    resolutions
-                    without the need to upscale.</p>
+                <p>Usa um algoritmo diferente e mais antigo que é potencialmente melhor para imagens maiores, mas com menos
+                    consistente
+                    composição. Melhor para prompts abstratos e de paisagem. Isso também gera imagens em maior
+                    resolução
+                    sem a necessidade de upscale.</p>
             </div>
 
             <div class="form-check" style="flex: 1;padding:30px;">
@@ -222,9 +222,9 @@
                 <label class="form-check-label label-checkbox" for="sameseed">
                     Same Seed
                 </label>
-                <p>Makes it so the seed affects all images of the resulting grid in the same way. If not used, each
-                    image in
-                    the grid will use a different "slice" of the seed, providing higher variety.</p>
+                <p>Faz com que a semente afete todas as imagens da grade resultante da mesma maneira. Se não for usado, cada
+                    imagem na
+                    a grade usará uma "fatia" diferente da semente, proporcionando maior variedade.</p>
             </div>
         </div>
 
@@ -235,9 +235,9 @@
                 <label class="form-check-label label-checkbox" for="video">
                     Video
                 </label>
-                <p>Saves a progress video, which is sent to you in the ✉️-triggered DM (you must react with the envelope
-                    to
-                    get the video link). This currently does not work with upscales.</p>
+                <p>Salva um vídeo de progresso, que é enviado para você no ✉️-triggered DM (DM desencadeado (você deve reagir com o envelope
+                    para
+                    peguar o link do vídeo). Isso atualmente não funciona com upscales.</p>
             </div>
 
             <div class="form-check" style="flex: 1;padding:30px;">
@@ -245,9 +245,9 @@
                 <label class="form-check-label label-checkbox" for="uplight">
                     Uplight
                 </label>
-                <p>Uses the "light" upscaler when selecting the U buttons. Results are then closer to the original
-                    image,
-                    with less detail added during upscale. Ideal for faces and smooth surfaces.</p>
+                <p>Usa o upscaler "leve" ao selecionar os botões U. Os resultados ficam mais próximos da imagem
+                    original,
+                    com menos detalhes adicionados durante o upscale. Ideal para rostos e superfícies lisas.</p>
             </div>
             <div style="flex: 1;padding:30px;">
 
