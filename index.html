@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="cerulean.min.css">
 
     <style>
+        body {
+            background-color: #222;
+            color: #fff;
+            font-family: 'Roboto', sans-serif;
+            padding-bottom: 150px;
+        }
+        
         #computed-prompt-div {
             position: fixed;
             bottom: 0;
@@ -20,7 +27,7 @@
             padding-right: 20px;
             padding-bottom: 15px;
             padding-top: 15px;
-            background: #EEF;
+            background: #333;
             border: 1px solid #AAA;
         }
 
@@ -42,7 +49,7 @@
 
 </head>
 
-<body style="background-color: #f5f5f5;font-family: 'Roboto', sans-serif;padding-bottom:150px">
+<body>
     <h1 style="text-align: center; margin-bottom: 20px;">Midjourney Prompt Copia e cola - Porq-On</h1>
     <div id="description" style="text-align: center; margin-bottom: 20px;">
         <p>Este aplicativo da web gera um prompt Midjourney a partir de uma entrada de texto contendo várias opções.</p>
@@ -63,4 +70,11 @@
                 <label for="ar">Aspect Ratio (AR)</label>
                 <p>Gera imagens com a proporção desejada. Digite a proporção desejada no formato "W:H",
                     por
-                    exemplo "16:9" para 
+                    exemplo "16:9" para gerar uma imagem widescreen.</p>
+                <input type="text" class="form-control" id="ar" name="ar" placeholder="Digite o AR aqui.">
+            </div>
+
+            <div class="form-group" style="flex: 1;padding:30px;">
+                <label for="size">Size (px)</label>
+                <p>Gera imagens com a resolução desejada em pixels. Digite a resolução desejada no formato
+                    "W
