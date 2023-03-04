@@ -5,16 +5,17 @@
     <meta charset="utf-8">
     <title>Midjourney Canal PorQ-On Texto-da-Imagem-@Midartai</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="cerulean.min.css">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/cerulean/bootstrap.min.css"
-        integrity="sha384-3fdgwJw17Bi87e1QQ4fsLn4rUFqWw//KU0g8TvV6quvahISRewev6/EocKNuJmEw" crossorigin="anonymous">
     <style>
+        body {
+            background-color: #222;
+            color: #fff;
+            font-family: 'Roboto', sans-serif;
+            padding-bottom: 150px;
+        }
+        
         #computed-prompt-div {
             position: fixed;
             bottom: 0;
@@ -26,7 +27,7 @@
             padding-right: 20px;
             padding-bottom: 15px;
             padding-top: 15px;
-            background: #EEF;
+            background: #333;
             border: 1px solid #AAA;
         }
 
@@ -48,15 +49,14 @@
 
 </head>
 
-<body style="background-color: #f5f5f5;font-family: 'Roboto', sans-serif;padding-bottom:150px">
+<body>
     <h1 style="text-align: center; margin-bottom: 20px;">Midjourney Prompt Copia e cola - Porq-On</h1>
     <div id="description" style="text-align: center; margin-bottom: 20px;">
-        <p>Este aplicativo da web gera um prompt Midjourney a partir de uma entrada de texto contendo várias opções.<p> 
-		<p>Basta inserir o prompt e as opções desejadas abaixo e o aplicativo gerará o prompt para você <p>
-		<p><a href="https://www.youtube.com/channel/UCz4yF0l7WcdceUcTpjRmYMg">Visite nosso canal no YouTube.</a></p>
+        <p>Este aplicativo da web gera um prompt Midjourney a partir de uma entrada de texto.</p>
+        <p>Basta inserir o prompt e as opções desejadas abaixo.</p>
+        <p><a href="https://www.youtube.com/channel/UCz4yF0l7WcdceUcTpjRmYMg">Visite nosso canal no YouTube.</a></p>
     </div>
 
-    <!-- HTML form with input fields for the parameters -->
     <!-- HTML form with input fields for the parameters -->
     <form id="form" class="form" style="margin: 20px;">
         <div class="form-group-prompt">
@@ -65,42 +65,13 @@
             <textarea class="form-control" id="prompt" name="prompt" rows="3"></textarea>
         </div>
 
-        <div style="display: flex;align-items: flex-end;">
-            <div class="form-group" style="flex: 1;padding:30px;">
-                <label for="ar">Aspect Ratio (AR)</label>
-                <p>Gera imagens com a proporção desejada. Digite a proporção desejada no formato "W:H",
-                    por
-                    exemplo "16:9" para 16:9 aspect ratio (~448x256).</p>
-                <input type="text" class="form-control" id="ar" name="ar" placeholder="W:H">
-            </div>
-
-            <div class="form-group" style="flex: 1;padding:30px;">
-                <label for="w">Width (W)</label>
-                <p>Define a largura da imagem. O valor deve estar entre 256 e 2034, tendo em mente que o
-                    resolução upscale máxima é de cerca de 3 Megapixels. Esses valores funcionam melhor como múltiplos de 64 (ou
-                    128
-                    for "--hd").</p>
-                <input type="number" class="form-control" id="w" name="w" min="256" max="2034">
-            </div>
-
-            <div class="form-group" style="flex: 1;padding:30px">
-                <label for="h">Height (H)</label>
-                <p>Define a altura da imagem. O valor deve estar entre 256 e 2034, tendo em mente que o
-                    resolução upscale máxima é de cerca de 3 Megapixels. Esses valores funcionam melhor como múltiplos (ou
-                    128
-                    para "--hd").</p>
-                <input type="number" class="form-control" id="h" name="h" min="256" max="2034">
-            </div>
-        </div>
+        
 
         <div style="display: flex;align-items: flex-end;">
             <div class="form-group" style="flex: 1;padding:30px;">
                 <label for="seed">Seed</label>
-                <p>Define a semente, que às vezes pode ajudar a manter as coisas mais estáveis ​​e reprodutíveis ao tentar
-                    gerar
-                    um prompt semelhante novamente. Deve ser um número inteiro positivo (qualquer número inteiro entre 0 a 4294967295).
-                    Se
-                    não usado, uma semente aleatória será escolhida em seu lugar, nos bastidores.</p>
+                <p>Define a Seed que ajuda a manter as coisas mais estáveis.
+                    Número inteiro entre 0 a 4294967295).  </p>
                 <input type="number" class="form-control" id="seed" name="seed" min="0" max="4294967295">
             </div>
 
@@ -112,11 +83,7 @@
                 <input type="text" class="form-control" id="no" name="no" placeholder="thing to remove">
             </div>
 
-            <div class="form-group" style="flex: 1;padding:30px;">
-                <label for="iw">Image Weight (IW)</label>
-                <p>Sets image prompt weight relative to text weight. The default value is 0.25.</p>
-                <input type="number" class="form-control" id="iw" name="iw" min="-1" max="1" step="0.1">
-            </div>
+            
         </div>
 
         <div style="display: flex;align-items: flex-end;">
@@ -144,86 +111,59 @@
             </div>
         </div>
 
-        <div style="display: flex;align-items: flex-end;">
-            <div class="form-group" style="flex: 1;padding:30px;">
-                <label for="stop">Stop</label>
-                <p>Para a geração em uma porcentagem anterior. Deve estar entre 10-100. Isso atualmente não funciona
-                    com
-                    upscales.</p>
-                <input type="number" class="form-control" id="stop" name="stop" min="10" max="100">
-            </div>
+        <div style="display: flex; flex-direction: row;">
+    <div class="form-group" style="flex: 1; padding: 30px;">
+        <label for="art-medium">Estilização</label>
+        <p>Meio Artístico. Escolha uma opção ou deixe em branco.</p>
+        <select id="art-medium" class="full-text-option">
+            <option value=""></option>
+            <option value="Atompunk">Atompunk</option>
+            <option value="Steampunk">Steampunk</option>
+            <option value="gogogaga">gogogaga</option>
+            <option value="Skullpunk">Skullpunk</option>
+            <option value="Wolfpunk">Wolfpunk</option>
+            <option value="Synthpunk">Synthpunk</option>
+            <option value="Robopunk">Robopunk</option>
+            <option value="Retropunk">Retropunk</option>
+            <option value="Ravepunk">Ravepunk</option>
+            <option value="Ghostpunk">Ghostpunk</option>
+            <option value="Flowerpunk">Flowerpunk</option>
+            <option value="Electropunk">Electropunk</option>
+            <option value="Cyberpunk">Cyberpunk</option>
+            <option value="Crystalpunk">Crystalpunk</option>
+            <option value="Cryopunke">Cryopunk</option>
+            <option value="Arcanepunk">Arcanepunk</option>
+            <option value="Aquapunk">Aquapunk</option>
+            <option value="Biopunk">Biopunk</option>
+        </select>
+    </div>
 
+    <div class="form-group" style="flex: 1; padding: 30px;">
+        <label for="art-medium2">Meio Artístico</label>
+        <p>Meio Artístico. Escolha uma opção ou deixe em branco.</p>
+        <select id="art-medium2" class="full-text-option">
+            <option value=""></option>
+            <option value="acrylic">Acrylic</option>
+            <option value="watercolor">Watercolor</option>
+            <option value="oil">Oil</option>
+            <option value="pastel">Pastel</option>
+            <option value="pen-ink">Pen and ink</option>
+            <option value="graphite">Graphite</option>
+            <option value="charcoal">Charcoal</option>
+            <option value="colored-pencil">Colored pencil</option>
+            <option value="marker">Marker</option>
+            <option value="pencil-crayon">Pencil crayon</option>
+            <option value="clay">Clay</option>
+            <option value="sculpture">Sculpture</option>
+            <option value="photography">Photography</option>
+            <option value="printmaking">Printmaking</option>
+            <option value="collage">Collage</option>
+            <option value="assemblage">Assemblage</option>
+            <option value="textile-art">Textile art</option>
+            <option value="digital-art">Digital art</option>
 
-            <div class="form-group" style="flex: 1;padding:30px;">
-                <label for="version">Version</label>
-                <p>Usa algoritmos antigos 1 (que anteriormente era a opção "vibe", às vezes melhor para macro ou texturas)
-                    ou
-                    2, a última melhoria. Estamos na versão 4 agora, que você não precisa especificar. Então especifique
-                    `--version 2` para usar o modelo anterior mais antigo, ou `--version 1` para o anterior.</p>
-                <select class="form-control" id="version" name="version">
-                    <option value=""></option>
-                    <option value="1">1 (oldest)</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>
-            </div>
-            <div class="form-group" style="flex: 1;padding:30px;">
-                <label for="version"> Meio Artístico </label>
-                <p>Meio Artístico. Escolha uma opção ou deixe em branco.</p>
-                <select id="art-medium" class="full-text-option">
-                    <option value=""></option>
-                    <option value="acrylic">Acrylic</option>
-                    <option value="watercolor">Watercolor</option>
-                    <option value="oil">Oil</option>
-                    <option value="pastel">Pastel</option>
-                    <option value="pen-ink">Pen and ink</option>
-                    <option value="graphite">Graphite</option>
-                    <option value="charcoal">Charcoal</option>
-                    <option value="colored-pencil">Colored pencil</option>
-                    <option value="marker">Marker</option>
-                    <option value="pencil-crayon">Pencil crayon</option>
-                    <option value="clay">Clay</option>
-                    <option value="sculpture">Sculpture</option>
-                    <option value="photography">Photography</option>
-                    <option value="printmaking">Printmaking</option>
-                    <option value="collage">Collage</option>
-                    <option value="assemblage">Assemblage</option>
-                    <option value="textile-art">Textile art</option>
-                    <option value="digital-art">Digital art</option>
-                </select>
-            </div>
-        </div>
-	    </select>
-            </div>
-            <div class="form-group" style="flex: 1;padding:30px;">
-                <label for="version"> Estilização </label>
-                <p>Meio Artístico. Escolha uma opção ou deixe em branco.</p>
-                <select id="art-medium" class="full-text-option">
-                    <option value=""></option>
-                    <option value="Atompunk">Atompunk</option>
-                    <option value="Steampunk">Steampunk</option>
-                    <option value="gogogaga">gogogaga</option>
-                    <option value="Skullpunk">Skullpunk</option>
-                    <option value="Wolfpunk">Wolfpunk</option>
-                    <option value="Synthpunk">Synthpunk</option>
-                    <option value="Robopunk">Robopunk</option>
-                    <option value="Retropunk">Retropunk</option>
-                    <option value="Ravepunk">Ravepunk</option>
-                    <option value="Ghostpunk">Ghostpunk</option>
-                    <option value="Flowerpunk">Flowerpunk</option>
-                    <option value="Electropunk">Electropunk</option>
-                    <option value="Cyberpunk">Cyberpunk</option>
-                    <option value="Crystalpunk">Crystalpunk</option>
-                    <option value="Cryopunke">Cryopunk</option>
-                    <option value="Arcanepunk">Arcanepunk</option>
-                    <option value="Aquapunk">Aquapunk</option>
-                    <option value="Biopunk">Biopunk</option>
-                </select>
-            </div>
-        </div>
-</select>
-            </div>
+             </select>
+    </div>        
             <div class="form-group" style="flex: 1;padding:30px;">
                 <label for="version"> Camera </label>
                 <p>Camera. Escolha uma opção ou deixe em branco.</p>
@@ -238,43 +178,12 @@
                     <option value="Panorama::1">Panorama</option>
                     <option value="satellite imagery::1">satellite imagery</option>
                     <option value="telescope lens::1"> telescope lens</option>
-                 
-               </select>
+                </select>
             </div>
         </div>
-        <div style="display: flex;align-items: flex-start;">
-            <div class="form-check" style="flex: 1;padding:30px;">
-                <input class="form-check-input" type="checkbox" value="" id="beta">
-                <label class="form-check-label label-checkbox" for="beta">
-                    Beta
-                </label>
-                <p>Usa um novo algoritmo experimental. Este modelo leva muito mais tempo para rodar e só produz 2
-                    saídas (1 para resoluções não quadradas). Também não funciona com `--hd`, `--stylize`, and `--q 5`.
-                </p>
-            </div>
-
-            <div class="form-check" style="flex: 1;padding:30px;">
-                <input class="form-check-input" type="checkbox" value="" id="hd">
-                <label class="form-check-label label-checkbox" for="hd">
-                    HD
-                </label>
-                <p>Usa um algoritmo diferente e mais antigo que é potencialmente melhor para imagens maiores, mas com menos
-                    consistente
-                    composição. Melhor para prompts abstratos e de paisagem. Isso também gera imagens em maior
-                    resolução
-                    sem a necessidade de upscale.</p>
-            </div>
-
-            <div class="form-check" style="flex: 1;padding:30px;">
-                <input class="form-check-input" type="checkbox" value="" id="sameseed">
-                <label class="form-check-label label-checkbox" for="sameseed">
-                    Same Seed
-                </label>
-                <p>Faz com que a semente afete todas as imagens da grade resultante da mesma maneira. Se não for usado, cada
-                    imagem na
-                    a grade usará uma "fatia" diferente da semente, proporcionando maior variedade.</p>
-            </div>
-        </div>
+        
+      
+       
 
         <div style="display: flex;align-items: flex-start;">
 
@@ -283,7 +192,7 @@
                 <label class="form-check-label label-checkbox" for="video">
                     Video
                 </label>
-                <p>Salva um vídeo de progresso, que é enviado para você no ✉️-triggered DM (DM desencadeado (você deve reagir com o envelope
+                <p>Salva um vídeo de progresso, que é enviado para você no ✉️ DM (você deve reagir com o envelope
                     para
                     peguar o link do vídeo). Isso atualmente não funciona com upscales.</p>
             </div>
@@ -294,14 +203,26 @@
                     Uplight
                 </label>
                 <p>Usa o upscaler "leve" ao selecionar os botões U. Os resultados ficam mais próximos da imagem
-                    original,
-                    com menos detalhes adicionados durante o upscale. Ideal para rostos e superfícies lisas.</p>
+                    original. Ideal para rostos e superfícies lisas.</p>
             </div>
             <div style="flex: 1;padding:30px;">
-
+			<div style="display: flex;align-items: flex-end;">
+            <div class="form-group" style="flex: 1;padding:30px;">
+                <label for="ar">Aspect Ratio (AR)</label>
+                <p>Gera imagens com a proporção desejada. Digite a proporção desejada no formato "W:H",
+                    por
+                    exemplo "16:9" para gerar uma imagem widescreen.</p>
+                <input type="text" class="form-control" id="ar" name="ar" placeholder="Digite o AR aqui.">
             </div>
 
-        </div>
+           
+
+        
+		
+
+         
+
+        
     </form>
 
 
@@ -354,8 +275,12 @@
         document.getElementById('copy-button').addEventListener('click', () => {
             document.getElementById('computed-prompt').select();
             document.execCommand('copy');
+			window.location.reload();
+});
         });
     </script>
 </body>
 
 </html>
+
+
