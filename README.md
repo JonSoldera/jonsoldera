@@ -27,6 +27,6 @@ or try to use this <a href="https://wine-ineff.github.io/Simple_Prompt_Generator
 # For more example going on:
 
 <p align="center">
-	<a href="https://twitter.com/wine_ineff" target='_blank'>Twitter</a><br>
-	<a href="https://www.instagram.com/wine_ineff" target='_blank'>Instagram</a><br>
-	<a href="https://www.reddit.com/user/WiNE-iNEFF" target='_blank'>Reddit</a>
+	<a href="https://twitter.com/" target='_blank'>Twitter</a><br>
+	<a href="https://www.instagram.com/" target='_blank'>Instagram</a><br>
+	<a href="https://www.reddit.com/user/" target='_blank'>Reddit</a>
