@@ -18,7 +18,7 @@ python main.py -p "pr1.txt" -n 5 -a 2
 ['-a', '--artists' , How many artists use in prompt (Standart: 2)]
 ```
 
-## <p align="center">Update</p>
+## <p align="center">MidartAi</p>
 
 
 </ul>
